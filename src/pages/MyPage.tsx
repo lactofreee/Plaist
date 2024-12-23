@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
-
-import "../css/index.css";
+import "../styles/index.css";
 import { useCookie } from "../hooks/useCookie";
 import MypageContents from "../components/My/MypageContents";
 

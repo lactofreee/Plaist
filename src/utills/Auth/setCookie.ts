@@ -19,10 +19,10 @@ export function setCookie(
     cryptoKey
   ).toString();
 
-  Cookies.set(key, encryptedData, { expires: 60 / 1440 }); // 1시간
+  Cookies.set(key, encryptedData, { expires: 0.5 / 1440 }); // 1시간
 
   if (navigate) {
-    startExpirationCheck(key, 60, navigate);
+    startExpirationCheck(key, 0.5, navigate);
   }
 
   return true;
@@ -48,11 +48,11 @@ export function startExpirationCheck(
     const elapsedMinutes = (currentTime - creationTime) / 60000;
     const remainingMinutes = expirationMinutes - elapsedMinutes;
 
-    if (remainingMinutes <= 5) {
+    if (remainingMinutes <= 0.1) {
       clearInterval(checkInterval);
       showExpirationModal(key, remainingMinutes, navigate);
     }
-  }, 60000); // 1분마다 체크
+  }, 1000); // 1분마다 체크
 }
 
 function showExpirationModal(
